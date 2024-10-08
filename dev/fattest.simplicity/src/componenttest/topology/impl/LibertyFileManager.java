@@ -272,10 +272,11 @@ public class LibertyFileManager {
             // UTF-8 by default so that GVT tests doesn't fail in non English locale
             OperatingSystem os = fileToSearch.getMachine().getOperatingSystem();
             Charset fileEncoding = StandardCharsets.UTF_8;
+            Log.info(CLASS, "gvt test os:", os.name() + " encoding:" + os.getDefaultEncoding());
             if (os == OperatingSystem.ZOS) {
                 fileEncoding = fileToSearch.getEncoding();
             }
-
+            Log.info(CLASS, "file encoding", fileEncoding.displayName());
             UnbufferedInputStreamReader rawReader = new UnbufferedInputStreamReader(input, fileEncoding);
             reader = new LineReader(rawReader);
 
